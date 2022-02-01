@@ -32,6 +32,3 @@ yarn test
 - Moment: (^2.29.1)
 - Typescript: (^4.5.5)
 
-## Apresentation 
-Here is the apresentation of the project in PT-BR
-[![Apresentation](https://img.youtube.com/vi/1se7NwnLjSo/0.jpg)](https://www.youtube.com/watch?v=1se7NwnLjSo "Apresentation")
