@@ -1,0 +1,199 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Este é o exemplo de um server onde, todo dia as 9AM, puxa novos artigos da API SpaceFlightNews, também possuindo rota para sincronizar novamente.",
+    "version": "1.0.0",
+    "title": "Back-end Challenge 🏅 2021 - Space Flight News",
+    "contact": {
+      "email": "matheusibarra98@gmail.com"
+    }
+  },
+  "host": "localhost:3333",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "BasePath"
+        ],
+        "summary": "Get main info from server",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "tags": [
+          "ArticlesPath"
+        ],
+        "summary": "Get all articles with pagination",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit of returned objets",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset Page",
+            "type": "number",
+            "required": false
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid Offset"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ArticlesPath"
+        ],
+        "summary": "put article to edit",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Body for post article",
+            "required": false,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid Body"
+          }
+        }
+      }
+    },
+    "/articles/:id": {
+      "get": {
+        "tags": [
+          "ArticlesPath"
+        ],
+        "responses": {
+          "400": {
+            "description": "Article not found"
+          }
+        },
+        "description": "Get one article",
+        "summary": "Get one article by Id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "tags": [
+          "ArticlesPath"
+        ],
+        "responses": {
+          "400": {
+            "description": "Article not found"
+          }
+        },
+        "description": "Edit an article",
+        "summary": "Edit a article of your choice",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Body for edit article",
+            "required": false,
+            "schema": {}
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "ArticlesPath"
+        ],
+        "responses": {
+          "400": {
+            "description": "Article not found"
+          }
+        },
+        "description": "Delete an artigle",
+        "summary": "Delete an article of your choice",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/sync/spacenewsapi/": {
+      "get": {
+        "tags": [
+          "Syncronize"
+        ],
+        "responses": {
+          "400": {
+            "description": "Error to syncronize with SpaceFlightApi"
+          }
+        },
+        "description": "Syncronize with SpaceFlightApi",
+        "summary": "Syncronize with SpaceFlightApi. DANGER. Make sure before run this route.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/sync/cronsync": {
+      "get": {
+        "tags": [
+          "Syncronize"
+        ],
+        "responses": {
+          "400": {
+            "description": "Error to sync"
+          }
+        },
+        "description": "Use to syncronize mannualy, to get news articles",
+        "summary": "Use to syncronize mannualy, to get news articles"
+      }
+    }
+  }
+}
